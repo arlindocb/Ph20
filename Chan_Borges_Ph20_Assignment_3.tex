@@ -1,0 +1,135 @@
+% This is how you make a comment
+\documentclass[12pt]{article}
+% For pictures
+\usepackage{graphicx}
+% For math
+\usepackage{amssymb, amsmath, mathtools}
+\begin{document}
+% Title
+\title{Ph20 Assignment 3}
+\author{Arlindo Chan Borges}
+\date{Nov 3, 2018}
+\maketitle
+% Sections and text
+\section*{1.}
+Here I set h = 0.1, t = [0, 30], and initial conditions: x(0) = 0, v(0) = 1.
+From the graph we can infer that x and v are oscillatory with increasing amplitude.
+
+\begin{figure}[h]
+\includegraphics[width=\textwidth]{Chan_Borges_ph20_3_1.png}
+\caption{ \textit{v}(t) vs. \textit{x}(t)}
+\end{figure}
+
+\section*{2.}
+\begin{equation} 
+x''(t) = -x(t), \hspace{10mm} x'(0) = 0,  \hspace{3mm}x'(0) = 1
+\end{equation}
+Trying sol of form $x = \textit{e}^{\alpha t}$, we get the characteristic equation $\alpha^2 + 1 = 0$.
+\\
+Therefore $\alpha = \pm i \Longrightarrow x(t) = C_1 e^{-it} + C_2 e^{it}$.
+\\
+Solving for the initial conditions, we get $C_1 = -C_2$ and $C_1 = -\frac{1}{2i}$
+\\
+Finally we have  $x(t) = \frac{1}{2i} [e^{it} - e^{-it}] = sin(t) $, the analytic solution.
+
+\begin{figure}[h]
+\includegraphics[width=\textwidth]{Chan_Borges_ph20_3_2.png}
+\caption{Global errors for $x$ and $v$}
+\end{figure}
+
+\noindent As we see the global error has an increasing envelope for increasing values of t, as expected.
+
+\newpage
+
+\section*{3.}
+Here we set h = 0.01. We see that there is a linear relationship, as desired.
+\begin{figure}[h]
+\includegraphics[scale = 0.55]{Chan_Borges_ph20_3_3.png}
+\centering
+\caption{Max $x$ error vs. $h$}
+\end{figure}
+
+\section*{4.}
+The long range trend is an exponential growth function. This agrees with the increasing amplitude envelope for the global errors, since we know that the energy is proportional to the amplitude squared.
+\begin{figure}[h]
+\includegraphics[scale = 0.55]{Chan_Borges_ph20_3_4.png}
+\centering
+\caption{Normalized total energy}
+\end{figure}
+
+\section*{5.}
+\begin{equation} 
+x_{i+1} = x_i + h v_{i+1} = x_i + h(v_i - h x_{i+1}) = x_i + h v_i - h^2 x_{i+1}
+\end{equation}
+
+Rearranging, 
+\begin{equation} 
+x_{i+1} (1 + h^2) = x_i + hv_i \Longrightarrow x_{i+1} = \frac{x_i + hv_i}{h^2 + 1}
+\end{equation}
+\begin{equation} 
+v_{i+1} = v_i - h x_{i+1} = v_i - h \frac{x_i + hv_i}{h^2 + 1}
+\end{equation}
+Using these equations, we repeat the method above: 
+\begin{figure}[h]
+  \centering
+  \begin{minipage}[b]{0.47\textwidth}
+    \includegraphics[width=\textwidth]{Chan_Borges_ph20_3_5.png}
+    \caption{Global errors for $x$ and $v$}
+  \end{minipage}
+  \hfill
+  \begin{minipage}[b]{0.47\textwidth}
+    \includegraphics[width=\textwidth]{Chan_Borges_ph20_3_6.png}
+    \caption{Normalized total energy}
+  \end{minipage}
+\end{figure}
+
+\noindent The global errors are much smaller as can be seen from the range of the y-axis (-0.8, 0.8) compared to (-3, 3) in question 2.
+The long range trend is now an exponential decay function, which means the amplitude envelope is now decreasing with the implicit Euler method. 
+
+\newpage
+
+\section*{6.}
+
+\begin{figure}[h]
+\includegraphics[width=\textwidth]{Chan_Borges_ph20_3_7.png}
+\caption{Phase-space geometry}
+\end{figure}
+
+\noindent We see from the figure that the explicit Euler starts tracing out larger and larger open circles, while the implicit Euler traces out smaller and smaller open circles. The analytical solution traces out a fixed closed circle as \\ expected. 
+
+\newpage
+
+\section*{7.}
+
+\begin{figure}[h]
+\includegraphics[width=\textwidth]{Chan_Borges_ph20_3_8.png}
+\caption{Symplectic phase-space geometry}
+\end{figure}
+
+\noindent The symplectic method traces out closed curves as expected but we can see from the graph that it is slightly titled from respect to the analytical solution, which is indicative of phase error even though amplitude is preserved.
+
+\newpage
+
+\section*{8.}
+
+\begin{figure}[h]
+\includegraphics[width=\textwidth]{Chan_Borges_ph20_3_9.png}
+\caption{Symplectic energy}
+\end{figure}
+
+\noindent We see from the figure that the energy oscillates slightly around the constant value (1 in this case) and it is so that the average energy is conserved. 
+
+\newpage
+
+\section*{9.}
+\begin{figure}[h]
+\includegraphics[width=\textwidth]{Chan_Borges_ph20_3_10.png}
+\caption{Symplectic phase difference}
+\end{figure}
+
+Here we see an appreciable difference in phase at very high values of t. 
+\end{document}
+
+
+
+
