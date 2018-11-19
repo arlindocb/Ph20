@@ -4,6 +4,11 @@
 \usepackage{graphicx}
 % For math
 \usepackage{amssymb, amsmath, mathtools}
+% For importing text files
+\usepackage{verbatim}
+% For importing code
+\usepackage{minted}
+
 \begin{document}
 % Title
 \title{Ph20 Assignment 3}
@@ -128,7 +133,17 @@ The long range trend is now an exponential decay function, which means the ampli
 \end{figure}
 
 Here we see an appreciable difference in phase at very high values of t. 
+
+\newpage
+\section*{Makefile}
+\verbatiminput{Makefile}
+
+\newpage
+\section*{Source Code}
+\inputminted{python}{Chan_Borges_Ph20_Assignment_3.py}
+
 \end{document}
+
 
 
 
